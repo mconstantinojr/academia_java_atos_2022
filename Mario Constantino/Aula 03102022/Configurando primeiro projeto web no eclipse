@@ -1,0 +1,11 @@
+Criando um projeto web
+
+- novo projeto Dinamic web project. 
+- marcar a opcao generate web.xml
+- criar pacote em src/main/java: Ex: br.atos
+- criar um servlet: new servlet
+- no momento inicial marca doget apenas
+- baixa tomcat 9
+- em server configura tomcat 9
+
+- http://localhost:8080/PrimeiroWeb/InicioServlet

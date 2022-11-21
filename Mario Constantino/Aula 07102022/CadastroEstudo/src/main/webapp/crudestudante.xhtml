@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:h="http://java.sun.com/jsf/html"
+	  		xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Cadastro Estudante</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h:outputLabel value="Nome:"/>
+			<h:inputText id="campoNome" value="#{estudanteBean.estudante.nome}"/>
+			<br/>
+			<h:outputLabel value="Cpf:"/>
+			<h:inputText id="campoCpf" value="#{estudanteBean.estudante.cpf}"/>
+			<br/>
+			<h:outputLabel value="Rua:"/>
+			<h:inputText id="campoRua" value="#{estudanteBean.estudante.endereco.rua}"/>
+			<br/>
+			<h:outputLabel value="Cidade:"/>
+			<h:inputText id="campoCidade" value="#{estudanteBean.estudante.endereco.cidade}"/>
+			<br/>
+			<h:outputLabel value="Casa:"/>
+			<h:inputText id="campoCasa" value="#{estudanteBean.estudante.endereco.casa}"/>
+			<br/>
+			<h:outputLabel value="Turma:"/>
+			<h:inputText id="campoDisciplina" value="#{estudanteBean.estudante.turma}"/>
+			<br/>
+			<h:outputLabel value="Media:"/>
+			<h:inputText id="campoSalario" value="#{estudanteBean.estudante.media}"/>
+			<br/>
+			<h:commandButton value="Enviar" action="#{estudanteBean.salvarEstudante}" />
+		</h:form>
+		
+		<br/>
+		<br/>
+		
+		<h:form id="formTable">	
+	
+		<h:dataTable value="#{estudanteBean.estudantes}" var="estudanteItem" border="2" id="tabelEstudante">
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			#{estudanteItem.nome}
+		</h:column>
+		<h:column>
+			<f:facet name="header">CPF</f:facet>
+			#{estudanteItem.cpf}
+		</h:column>	
+		<h:column>
+			<f:facet name="header">Cidade</f:facet>
+			#{estudanteItem.endereco.cidade}
+		</h:column>	
+		<h:column>
+			<f:facet name="header">Rua</f:facet>
+			#{estudanteItem.endereco.rua}
+		</h:column>	
+		<h:column>
+			<f:facet name="header">Casa</f:facet>
+			#{estudanteItem.endereco.casa}
+		</h:column>	
+		<h:column>
+			<f:facet name="header">Turma</f:facet>
+			#{estudanteItem.turma}
+		</h:column>	
+		<h:column>
+			<f:facet name="header">Media</f:facet>
+			#{estudanteItem.media}
+		</h:column>	
+		
+		<h:column>
+	   	    <h:commandLink id="deletar" value="Deletar" action="#{estudanteBean.removerEstudante(estudanteItem)}"
+		        onclick="return confirm('Deseja Deletar?')">
+	                    			
+	       	</h:commandLink>
+	     </h:column>
+	     
+     	 <h:column>
+	   	    <h:commandLink id="editar" value="Editar" action="#{estudanteBean.editarEstudante(estudanteItem)}">
+	                    			
+	       	</h:commandLink>
+	     </h:column>
+		
+			
+	</h:dataTable>
+	</h:form>	
+	</h:body>
+</html>

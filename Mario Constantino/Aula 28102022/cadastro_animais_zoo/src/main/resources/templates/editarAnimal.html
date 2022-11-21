@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8">
+		<title>Editar</title>
+			<!--Import Google Icon Font-->
+      		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      		<!--Import materialize.css-->
+      	 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      		<!--Let browser know website is optimized for mobile-->
+      		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+	</head>
+	<body>
+		<header>
+				<nav>
+					<div class="nav-wrapper">
+						<a href="#" class="brand-logo">Atos</a>
+						<ul id="nav-mobile" class="right hide-on-med-and-down">
+							<li><a href="/index">Index</a></li>
+							<li><a href="/animaisTabela">Listar Animais</a></li>
+						</ul>
+					</div>
+				</nav>
+		
+		</header>
+	
+	
+	<div th:"animal : $animal" >
+		
+		<form class="container" th:action="@{/editarAnimal}" method="post">
+			
+			<input hidden="true"   th:value="${animal.idAnimal}"  name="idAnimal" ></input>
+			Nome Animal: <input   th:value="${animal.nomeAnimal}"  name="nomeAnimal"  ></input>
+			Especie: <input   th:value="${animal.especie}"  name="especie" ></input>
+			Raca: <input   th:value="${animal.raca}"  name="raca" ></input>
+			Data Nascimento: <input   th:value="${animal.dataNascimento}"  name="dataNascimento" type="date"></input>
+			Jaula:
+					<select required name="jaula" id="jaulasId" >
+						<option  value="" disabled selected>Escolha uma Jaula</option>
+						<option th:each="jaulaItem : ${animal.jaula}" th:value="${jaulaItem.idJaula}" th:text="${jaulaItem.nomeZoologico}" selected="selected" ></option>
+						<option th:each="jaulaItemToda : ${jaulas}" th:value="${jaulaItemToda.idJaula}" th:text="${jaulaItemToda.nomeZoologico}"  ></option>
+					</select>
+			
+			<button class="waves-effect waves-light btn" type="submit">Enviar</button>
+			
+		
+		
+		
+		</form>
+	
+	
+	
+	</div>
+	
+		
+		<!--JavaScript at end of body for optimized loading-->
+      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script>
+		<style type="text/css"></style> 
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+	<script type="text/javascript">   
+		window.onload=function(){
+      		$(document).ready(function() {
+         	$('select').material_select();
+      		});
+		}
+</script>
+	
+	</body>
+</html>

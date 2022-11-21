@@ -1,0 +1,33 @@
+
+  <div class="no-style" style="margin-left: 4px">
+    <div class="container">
+      <h1>Cadastrar Programador</h1>
+      <form [formGroup]="formCadastro" (ngSubmit)="salvarProgramador()" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome: </label>
+          <input id="nome" type="text" class="form-control" required formControlName="nome">
+        </div>
+
+        <div class="form-group">
+          <label for="idade">Idade: </label>
+          <input id="idade" ng-model="idade" type="number" class="form-control" required formControlName="idade">
+          <span ng-show="formCadastro.idade.$touched && formCadastro.idade.$invalid">Idade deve ser entre 0 e 200.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="dataNascimento">Data Nascimento: </label>
+          <input id="dataNascimento"
+          type="date" required class="form-control" formControlName="dataNascimento">
+        </div>
+
+        <div class="form-group">
+          <label for="salario">Salario: </label>
+          <input id="salario" ng-model="salario" type="number" class="form-control" required formControlName="salario">
+          <span ng-show="formCadastro.salario.$touched && formCadastro.salario.$invalid">Salario deve ser entre 0 e 200000.</span>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!formCadastro.valid">Salvar</button>
+        <button (click)="voltar()" class="btn btn-success">Voltar</button>
+      </form>
+    </div>
+  </div>
